@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import health
+from app.api import health, transcribe
 from dotenv import load_dotenv
 import os
 
@@ -14,6 +14,7 @@ app = FastAPI(
 
 # Подключаем роутеры
 app.include_router(health.router)
+app.include_router(transcribe.router)
 
 @app.on_event("startup")
 async def startup_event():
