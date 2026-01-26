@@ -1,0 +1,12 @@
+services:
+  backend:
+    build: ./backend
+    container_name: dictatranscribe_backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - backend/.env
+    volumes:
+      # Прокидываем код внутрь контейнера для live-reload при разработке
+      - ./backend/app:/app/app
+    restart: unless-stopped
